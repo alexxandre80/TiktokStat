@@ -1,0 +1,55 @@
+{
+    "packages": [
+        {
+            "name": "ssovit/tiktok-api",
+            "version": "2.0.1",
+            "version_normalized": "2.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ssovit/TikTok-API-PHP.git",
+                "reference": "c3ef9472e678becd74bf26d5c02d2d74f4c654bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ssovit/TikTok-API-PHP/zipball/c3ef9472e678becd74bf26d5c02d2d74f4c654bd",
+                "reference": "c3ef9472e678becd74bf26d5c02d2d74f4c654bd",
+                "shasum": ""
+            },
+            "time": "2022-02-15T13:10:56+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Sovit\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sovit Tamrakar",
+                    "email": "sovit.tamrakar@gmail.com",
+                    "homepage": "https://github.com/ssovit/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Unofficial TikTok API for PHP",
+            "homepage": "https://github.com/ssovit/TikTok-API-PHP",
+            "keywords": [
+                "TikTok ",
+                "tiktok-api",
+                "tiktok-scraper"
+            ],
+            "support": {
+                "email": "sovit.tamrakar@gmail.com",
+                "issues": "https://github.com/ssovit/TikTok-API-PHP/issues",
+                "source": "https://github.com/ssovit/TikTok-API-PHP"
+            },
+            "install-path": "../ssovit/tiktok-api"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

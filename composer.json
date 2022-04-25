@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ssovit/tiktok-api": "^2.0"
+    }
+}
