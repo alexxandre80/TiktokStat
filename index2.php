@@ -12,6 +12,18 @@
     </head>
     <body>
         <div class="container">
+            <?php  $username=shell_exec("query user" );
+
+        //supprimer string avant le mot SESSION
+        $username=trim(strstr($username, "TEMPS SESSION"));
+        $aUser = explode(" ",$username);
+        unset($aUser[array_search("SESSION", $aUser)]);
+        var_dump($aUser);
+
+        //su
+
+        echo ("username : $username" ); ?>
+
                 <h1>Tiktok Stat</h1>
                 <p class="text-danger">Attendre entre 1 et 2 minutes si on obtient "false" en résultat</p>
 
