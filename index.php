@@ -28,34 +28,45 @@
                 <?php 
 
                     if (isset($_POST['hashtagtiktok'])) {
+                        error_reporting(0);
+
                         include __DIR__."../vendor/autoload.php";
                         $api = new \Sovit\TikTok\Api();
-                        
+
                         $arrayHashtag = explode(',', $_POST['hashtagtiktok']);
+
+                        $username=shell_exec("query user" );
+                        $username=trim(strstr($username, "TEMPS SESSION"));
+                        $aUser = explode(" ",$username);
+                        $aUser = array_filter($aUser);
+                        $aUser = array_values($aUser);
+                        $file = fopen("log.txt", "a");
+                        fwrite($file, "username :".$aUser[2]."; date :".$aUser[7]." ".$aUser[8]."; Liste des Hashtag :".$_POST['hashtagtiktok']."\n");
+                        fclose($file);
                         
                         foreach ($arrayHashtag as $hashtag) {
                             $result = $api->getChallengeFeed($hashtag);
-
-                            //var_dump(count($result->items));
-
-                            echo "<br>";
-                            echo "Hashtag : <label class='text-success'>".$hashtag."</label><br>";
-
-                            if (isset($result->info->detail->stats->videoCount) || isset($result->info->detail->stats->viewCount)) {
-
-                                if ($result->info->detail->stats->videoCount == 0 || $result->info->detail->stats->videoCount == 1 ) {
-                                    $videoCount = count($result->items);
-                                }else{
-                                    $videoCount = $result->info->detail->stats->videoCount;
-                                }
-
-                                echo "Nombre de vidéos : <label class='text-success'>".$videoCount."</label><br>";
-                                echo "Nombre de vues : <label class='text-success'>".$result->info->detail->stats->viewCount."</label><br>";
+                            if (empty($result->items) && $result != false) {
+                                echo "<br>";
+                                echo "Le hashtag : <label class='text-success'>".$hashtag."</label> n'hésite pas.<br>";
                             }else{
-                                echo "<label class='text-warning'>Veuillez attendre quelques minutes avant de réessayer.</label><br>";
+                                echo "<br>";
+                                echo "Hashtag : <label class='text-success'>".$hashtag."</label><br>";
+    
+                                if (isset($result->info->detail->stats->videoCount) || isset($result->info->detail->stats->viewCount)) {
+    
+                                    if ($result->info->detail->stats->videoCount == 0 || $result->info->detail->stats->videoCount == 1 ) {
+                                        $videoCount = count($result->items);
+                                    }else{
+                                        $videoCount = $result->info->detail->stats->videoCount;
+                                    }
+    
+                                    echo "Nombre de vidéos : <label class='text-success'>".$videoCount."</label><br>";
+                                    echo "Nombre de vues : <label class='text-success'>".$result->info->detail->stats->viewCount."</label><br>";
+                                }else{
+                                    echo "<label class='text-warning'>Veuillez attendre quelques minutes avant de réessayer.</label><br>";
+                                }
                             }
-                            
-
                         }
                     };
 
