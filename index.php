@@ -45,24 +45,24 @@
                         fclose($file);
                         
                         foreach ($arrayHashtag as $hashtag) {
-                            $result = $api->getChallengeFeed($hashtag);
-                            if (empty($result->items) && $result != false) {
+                            $result = $api->getChallenge($hashtag);
+                            if (empty($result->stats) && $result != false) {
                                 echo "<br>";
                                 echo "Le hashtag : <label class='text-success'>".$hashtag."</label> n'hésite pas.<br>";
                             }else{
                                 echo "<br>";
                                 echo "Hashtag : <label class='text-success'>".$hashtag."</label><br>";
     
-                                if (isset($result->info->detail->stats->videoCount) || isset($result->info->detail->stats->viewCount)) {
+                                if (isset($result->stats->videoCount) || isset($result->stats->viewCount)) {
     
-                                    if ($result->info->detail->stats->videoCount == 0 || $result->info->detail->stats->videoCount == 1 ) {
-                                        $videoCount = count($result->items);
-                                    }else{
-                                        $videoCount = $result->info->detail->stats->videoCount;
-                                    }
+                                    //if ($result->info->detail->stats->videoCount == 0 || $result->info->detail->stats->videoCount == 1 ) {
+                                    //    $videoCount = count($result->items);
+                                    //}else{
+                                    //    $videoCount = $result->info->detail->stats->videoCount;
+                                    //}
     
-                                    echo "Nombre de vidéos : <label class='text-success'>".$videoCount."</label><br>";
-                                    echo "Nombre de vues : <label class='text-success'>".$result->info->detail->stats->viewCount."</label><br>";
+                                    echo "Nombre de vidéos : <label class='text-success'>".$result->stats->videoCount."</label><br>";
+                                    echo "Nombre de vues : <label class='text-success'>".$result->stats->viewCount."</label><br>";
                                 }else{
                                     echo "<label class='text-warning'>Veuillez attendre quelques minutes avant de réessayer.</label><br>";
                                 }
