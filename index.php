@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
         <script src="js/bootstrap/bootstrap.min.js"></script>
         <script src="js/jquery-3.6.0.min.js"></script>
-        <!--<script src="js/tiktok.js"></script>-->
+        <script src="js/tiktok.js"></script>
         <title>Tiktok Stat</title>
     </head>
     <body>
@@ -17,7 +17,7 @@
 
                 <form action="#" method="post">
                     <div class="form-group">
-                        <label for="hashtagtiktok">hashtag Tiktok</label>
+                        <label data-source="mydatasource" for="hashtagtiktok">hashtag Tiktok</label>
                         <input type="text" placeholder="hashtag1,hashtag2,hashtag3,..." class="form-control" name="hashtagtiktok" id="has   htagtiktok" value="<?= (isset($_POST['hashtagtiktok'])) ? $_POST['hashtagtiktok'] : '' ?>">
                         <small id="hashtagtiktok" class="form-text text-muted">Ecrire les hastags séparer par une virgule (5 MAX)</small>
                     </div>
